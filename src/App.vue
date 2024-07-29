@@ -8,7 +8,7 @@
                 <li>2. Press "Validate Form"</li>
                 <li>- Since isCarBrandRequired is "false", we expect the form to be valid (good)</li>
                 <li>3. Press "Toggle isCarBrandRequired"</li>
-                <li>- Now isCarBrandRequired is "true" and the form should be invalid but you can see that cars is still valid. But why? The validation rules are a computed property with isCarBrandRequired as reactive dependency. 🤷</li>
+                <li>- Now isCarBrandRequired is "true" and the form should be invalid but you can see that "cars" is still valid. It should not be valid because "brand" is empty. Why is it not working? The validation rules are a computed property with isCarBrandRequired as reactive dependency. 🤷</li>
                 <li>4. If you change the value of isCarBrandRequired in the code to be "true" initially you will see that it works initially but if you toggle it at runtime, it doesn't work.</li>
             </ol>
         </div>
@@ -89,7 +89,7 @@
 
     const formRules = computed(() => {
         console.log('Recomputing formRules...')
-        
+
         return {
             username: { required: requiredIf(isCarBrandRequired.value) },
             cars: {
